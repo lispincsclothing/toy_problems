@@ -10,13 +10,11 @@
 def has_matching_parens(input_string)
   stack = []
   lookup_hash = {'{' => '}', '[' => ']', '('=>')'}
-  lookup_keys = lookup_hash.keys
-  lookup_values = lookup_hash.values
 
   input_string.each_char do |input_char|
-    if lookup_keys.include? input_char
+    if lookup_hash.keys.include? input_char
       stack << input_char
-    elsif lookup_values.include? input_char
+    elsif lookup_hash.values.include? input_char
       return false if stack.empty? || (lookup_hash[stack.pop] != input_char)
     end
   end
